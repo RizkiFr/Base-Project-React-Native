@@ -27,9 +27,11 @@ const TabNavigatorConfig =
 
 const RouteConfigs = {
     Home: {
+        path: 'yay',
         screen: HomeStack,
     },
     Profile: {
+        path: 'test/user',
         screen: ProfileStack,
     },
 };

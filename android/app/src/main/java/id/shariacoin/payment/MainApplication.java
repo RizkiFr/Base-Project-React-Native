@@ -1,4 +1,4 @@
-package com.core;
+package id.shariacoin.payment;
 
 import android.app.Application;
 import android.content.Context;

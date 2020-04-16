@@ -161,7 +161,6 @@
 				D4A7F65F4D6D34AC15DCF403 /* Pods-coreTests.debug.xcconfig */,
 				8EBC7DD4A40C3F32E2BBF6FB /* Pods-coreTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -309,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -684,7 +684,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = id.shariacoin.payment;
 				PRODUCT_NAME = core;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -703,7 +703,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = id.shariacoin.payment;
 				PRODUCT_NAME = core;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

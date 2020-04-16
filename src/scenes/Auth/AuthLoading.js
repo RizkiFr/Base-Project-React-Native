@@ -1,42 +1,56 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { color } from '_styles';
 import { BarIndicator } from 'react-native-indicators';
-
+import Axios from 'axios';
+import { saveUser, saveWallet, getGoldPrice, getSilverPrice } from '_states/actions/user';
+import { connect } from 'react-redux';
 
 const AuthLoading = (props) => {
 
-    useEffect(()=>{
-        AsyncStorage.getItem('auth')
-            .then(val=>{
-                console.log(val)
-                if(val=='true'){
+    useEffect(() => {
+        AsyncStorage.getItem('bearer')
+            .then(val => {
+                Axios.defaults.headers.common['Bearer'] = val;
+                Axios.defaults.baseURL = 'https://ibank.shariacoin.co.id/api';
+                if (val) {
+                    getData()
                     props.navigation.navigate('App')
-                }else{
+                } else {
                     props.navigation.navigate('Auth')
                 }
             })
-    })
+    }, [])
 
-    return(
+    const getData = async () => {
+        const token = await AsyncStorage.getItem('token')
+        props.dispatch(saveWallet(token))
+        props.dispatch(saveUser(token))
+        props.dispatch(getGoldPrice(token))
+        props.dispatch(getSilverPrice(token))
+    }
+
+    return (
         <View style={styles.wrap}>
-            <BarIndicator  color={'#fff'} count={5} size={30} style={{flex: 0}}/>
-            {/* <Image source={require('../assets/cm.png')} style={styles.logo} resizeMode='contain' /> */}
+            <BarIndicator color={'#fff'} size={30} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    wrap:{
+    wrap: {
         backgroundColor: color.primary,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },
-    // logo:{
-    //     height: Dimensions.get('window').height/10
-    // }
 })
 
-export default AuthLoading;
+const mapStateToProps = state => {
+    return {
+        user: state.user.data
+    }
+}
+
+export default connect(mapStateToProps)(AuthLoading);

@@ -7,7 +7,10 @@ const ProfileNavigatorConfig = {
 };
 
 const RouteConfigs = {
-	Profile
+	Profile: {
+		screen: Profile,
+		path: 'profile/:id',
+	}
 };
 
 const ProfileNavigator = createStackNavigator(RouteConfigs, ProfileNavigatorConfig);

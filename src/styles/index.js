@@ -1,7 +1,9 @@
+import { StyleSheet } from 'react-native';
+
 export const color = {
-    primary: '#2196F3',
-    p100: '#BBDEFB',
-    p200: '#90CAF9',
+    primary: '#FBB829',
+    p100: '#FFF9C4',
+    p200: '#FFE2BE',
     p300: '#64B5F6',
     p400: '#42A5F5',
     p500: '#2196F3',
@@ -33,3 +35,13 @@ export const color = {
     g900: '#212121',
     gr300: '#81C784',
 };
+
+export const style =  StyleSheet.create({
+    shadow:{
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,  
+        elevation: 2,
+    },
+})
